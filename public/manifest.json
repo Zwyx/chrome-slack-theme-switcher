@@ -1,0 +1,16 @@
+{
+	"name": "Slack Theme Switcher",
+	"version": "1.0.0",
+	"description": "Automatically switch Slack's theme to match the system's one.",
+	"icons": {
+		"128": "favicon.png"
+	},
+	"manifest_version": 3,
+	"permissions": [],
+	"content_scripts": [
+		{
+			"matches": ["https://app.slack.com/*"],
+			"js": ["content.js"]
+		}
+	]
+}

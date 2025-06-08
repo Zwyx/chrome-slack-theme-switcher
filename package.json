@@ -1,0 +1,26 @@
+{
+	"name": "chrome-slack-theme-switcher",
+	"description": "Automatically switch Slack's theme to match the system's one.",
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"build": "npm run lint && tsc -p tsconfig.scripts.json && cp public/* dist",
+		"build:no-lint": "tsc -p tsconfig.scripts.json && cp public/* dist",
+		"pack:chrome": "npm run build && cd dist && 7z a chrome-slack-sections-cleaner-$(jq -r '.version' ../package.json).zip *",
+		"pack:firefox": "npm run build && cp firefox/* dist && cd dist && 7z a chrome-slack-sections-cleaner-$(jq -r '.version' ../package.json).xpi *",
+		"lint": "eslint scripts --ext ts --report-unused-disable-directives --max-warnings 0",
+		"eslint": "eslint .",
+		"eslint:print-active-rules": "eslint --print-config src/pages/_app.tsx",
+		"prettier": "prettier -w ."
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@types/chrome": "^0.0.237",
+		"@typescript-eslint/eslint-plugin": "^5.59.0",
+		"@typescript-eslint/parser": "^5.59.0",
+		"eslint": "^8.38.0",
+		"eslint-config-prettier": "^8.8.0",
+		"prettier": "^2.8.8",
+		"typescript": "^5.0.2"
+	}
+}
